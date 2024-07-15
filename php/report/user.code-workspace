@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "../user"
+		},
+		{
+			"path": "../stats"
+		},
+		{
+			"path": "../service"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../mongodb"
+		},
+		{
+			"path": "../habitat_comment"
+		},
+		{
+			"path": "../habitat"
+		},
+		{
+			"path": "../food"
+		},
+		{
+			"path": "../contact"
+		},
+		{
+			"path": "../animal"
+		},
+		{
+			"path": "../review"
+		}
+	]
+}
