@@ -25,7 +25,7 @@
     </nav>
     <div class="container mt-5">
         <h2 class="text-center">Manage Animals</h2>
-        <form action="../php/add_animal.php" method="POST">
+        <form action="../php/animal/add_animal.php" method="POST">
             <div class="form-group">
                 <label for="prenom">Animal Name:</label>
                 <input type="text" class="form-control" id="prenom" name="prenom" required>
@@ -35,11 +35,15 @@
                 <input type="text" class="form-control" id="etat" name="etat" required>
             </div>
             <div class="form-group">
-                <label for="habitat_id">Habitat ID:</label>
+                <label for="animal_id">Animal</label>
+                <input type="number" class="form-control" id="animal_id" name="animal_id" required>
+            </div>
+            <div class="form-group">
+                <label for="habitat_id">Animal</label>
                 <input type="number" class="form-control" id="habitat_id" name="habitat_id" required>
             </div>
             <div class="form-group">
-                <label for="race_id">Race ID:</label>
+                <label for="race_id">race</label>
                 <input type="number" class="form-control" id="race_id" name="race_id" required>
             </div>
             <button type="submit" class="btn btn-success">Add Animal</button>
