@@ -1,206 +1,234 @@
-/* Global Styles */
+/* Base Styles */
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Dancing Script', cursive;
+    background-color: #FAF3E0; /* Beige/crème */
+    color: #4A403A; /* Dark Brown */
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+
+    
 }
 
-/* Navbar Styles */
+/* Navbar */
 .navbar {
-    padding: 0.75rem 1rem;
+    background-color: #804000; /* Marron */
 }
+.nav-link {
+    color: #EDE0D4; /* Light khaki */
+}
+.nav-link:hover {
+    color: #D4C19C; /* Slightly darker khaki */
 
-.navbar-brand {
+}
+.nav-link {
+    /* Text in Bold */
     font-weight: bold;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
 }
 
-.navbar-nav {
-    margin: 0 auto; /* Center the nav items */
+
+/* Center navbar items */
+.navbar .navbar-nav {
+    margin: 0 auto;
 }
 
-.navbar-nav .nav-item {
-    margin: 0 0.5rem;
+/* Jumbotron */
+.jumbotron {
+    background-color: #B8860B; /* Dark goldenrod */
+    color: #804000; /* Marron */
+}
+.jumbotron img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+.jumbotron img:hover {
+    transform: scale(1.05);
 }
 
-.navbar-nav .nav-link {
-    font-size: 1.1rem;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
+/* Buttons */
+.btn-terracotta {
+    background-color: #E2725B; /* Terracotta */
+    border-color: #E2725B;
+}
+.btn-terracotta:hover {
+    background-color: #C65A42; /* Darker Terracotta */
+    border-color: #C65A42;
+    color: #fff;
 }
 
-.navbar-nav .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #4CAF50;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+/* Cards */
+.card {
+    border-color: #804000; /* Marron */
+    border-radius: 10px;
+    transition: box-shadow 0.3s;
+}
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card-title, .card-text {
+    color: #804000; /* Marron */
 }
 
-.navbar-nav .nav-link:hover::after {
-    transform: translateX(0);
+/* Footer */
+footer {
+    background-color: #804000; /* Marron */
+    color: #EDE0D4; /* Light khaki */
+    padding: 20px 0;
+}
+footer p {
+    margin: 0;
 }
 
-.navbar-nav .nav-link.active {
-    color: #fff !important;
-    background-color: #4CAF50;
-    border-radius: 5px;
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideIn {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.navbar-toggler {
-    border: none;
-    outline: none;
+/* Animation for sections */
+section {
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Container Styling */
+/* Media Queries */
+@media (max-width: 1200px) {
+    .jumbotron h1 {
+        font-size: 2.5rem;
+    }
+    .jumbotron p {
+        font-size: 1.25rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .jumbotron h1 {
+        font-size: 2rem;
+    }
+    .jumbotron p {
+        font-size: 1rem;
+    }
+    .card-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .jumbotron h1 {
+        font-size: 1.75rem;
+    }
+    .jumbotron p {
+        font-size: 0.875rem;
+    }
+    .card-title {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .jumbotron h1 {
+        font-size: 1.5rem;
+    }
+    .jumbotron p {
+        font-size: 0.75rem;
+    }
+    .card-title {
+        font-size: 0.75rem;
+    }
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Additional Styles */
+header, footer, nav, section, article, aside {
+    padding: 20px;
+}
 .container {
-    margin-top: 2rem;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.jumbotron {
+    padding: 40px 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 0.5s ease-in-out;
+}
+.jumbotron h1, .jumbotron p {
+    margin: 0;
+}
+.jumbotron p.lead {
+    margin-top: 20px;
+}
+.card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.card-body {
+    padding: 20px;
+}
+.card-title {
+    margin-bottom: 10px;
+}
+.card-text {
+    margin-bottom: 20px;
+}
+h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #804000; /* Marron */
+    text-align: center;
+    animation: slideIn 1s ease-in-out;
+}
+footer p {
+    font-size: 1rem;
 }
 
-/* Keyframes for Animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Specific for Habitat and Service Sections */
+#habitats-global .card, #services-global .card {
+    margin-bottom: 30px;
+}
+#habitats-global h2, #services-global h2 {
+    animation: slideIn 1s ease-in-out;
 }
 
-/* Form Styles */
+/* Forms */
 form {
-    margin-top: 1rem;
+    background-color: #B8860B; /* Dark goldenrod */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 .form-group {
     margin-bottom: 1.5rem;
 }
-
-.form-control {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+label {
+    font-weight: bold;
+}
+input.form-control, textarea.form-control {
+    border: 1px solid #804000; /* Marron */
 }
 
-.form-control:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+/* Hover Effects */
+.navbar-nav .nav-link:hover {
+    color: #D4C19C !important; /* Slightly darker khaki */
+    background-color: transparent;
 }
-
-.invalid-feedback {
-    font-size: 0.875rem;
-}
-
-/* Button Styles */
-.btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-success {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-}
-
-.btn-success:hover {
-    background-color: #45a049;
-    border-color: #45a049;
+.btn:hover {
+    background-color: #804000; /* Marron */
+    border-color: #804000;
     transform: translateY(-2px);
 }
-
-/* Headings */
-h2 {
-    font-size: 2rem;
-    color: #4CAF50;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Card Styles */
-.card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.card img {
-    border-bottom: 3px solid #4CAF50;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    color: #4CAF50;
-}
-
-/* Footer Styles */
-footer {
-    margin-top: 2rem;
-    padding: 1rem 0;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-}
-
-footer a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .navbar-nav .nav-link {
-        font-size: 1rem;
-    }
-
-    .container {
-        padding: 1.5rem;
-    }
-
-    .navbar-nav .nav-link::after {
-        height: 1px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
+.card:hover .card-title {
+    color: #D4C19C; /* Slightly darker khaki */
 }
