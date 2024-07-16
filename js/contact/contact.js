@@ -17,22 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
 // js/contact.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    const contactForm = document.getElementById('contact-form');
+
+    contactForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        const formData = new FormData(this);
-        fetch('php/contact.php', {
+        const formData = new FormData(contactForm);
+        fetch('php/contact/contact.php', {
             method: 'POST',
             body: formData
         })
         .then(response => response.text())
-        .then(data => {
-            alert('Merci pour votre message ! Nous vous répondrons bientôt.');
-            this.reset();
+        .then(message => {
+            alert(message);
+            contactForm.reset();
         })
         .catch(error => {
-            alert('Désolé, une erreur est survenue. Veuillez réessayer.');
-            console.error('Erreur:', error);
+            console.error('Error:', error);
         });
     });
 });
-

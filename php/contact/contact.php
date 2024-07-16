@@ -13,5 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Failed to send message.";
     }
+    $stmt->close();
+    $conn->close();
 }
 ?>
