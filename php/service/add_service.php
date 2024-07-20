@@ -7,10 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $conn->prepare("INSERT INTO service (nom, description) VALUES (?, ?)");
     $stmt->bind_param("ss", $nom, $description);
+
     if ($stmt->execute()) {
         echo "Service added successfully.";
     } else {
         echo "Failed to add service.";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>

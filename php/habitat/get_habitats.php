@@ -1,5 +1,5 @@
 <?php
-include '../db.php';
+include 'db.php';
 
 $stmt = $conn->prepare("SELECT * FROM habitat");
 $stmt->execute();

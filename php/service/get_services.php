@@ -4,7 +4,14 @@ include '../db.php';
 $stmt = $conn->prepare("SELECT * FROM service");
 $stmt->execute();
 $result = $stmt->get_result();
-$services = $result->fetch_all(MYSQLI_ASSOC);
+
+$services = array();
+while ($row = $result->fetch_assoc()) {
+    $services[] = $row;
+}
 
 echo json_encode($services);
+
+$stmt->close();
+$conn->close();
 ?>

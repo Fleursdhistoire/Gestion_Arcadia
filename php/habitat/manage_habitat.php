@@ -1,16 +1,17 @@
 <?php
-include '../db.php';
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $habitat_id = $_POST['habitat_id'];
     $nom = $_POST['nom'];
     $description = $_POST['description'];
 
-    $stmt = $conn->prepare("INSERT INTO habitat (nom, description) VALUES (?, ?)");
-    $stmt->bind_param("ss", $nom, $description);
+    $stmt = $conn->prepare("UPDATE habitat SET nom = ?, description = ? WHERE habitat_id = ?");
+    $stmt->bind_param("ssi", $nom, $description, $habitat_id);
     if ($stmt->execute()) {
-        echo "Habitat added successfully.";
+        echo "Habitat updated successfully.";
     } else {
-        echo "Failed to add habitat.";
+        echo "Failed to update habitat.";
     }
 }
 ?>

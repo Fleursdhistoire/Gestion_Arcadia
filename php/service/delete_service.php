@@ -6,10 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $conn->prepare("DELETE FROM service WHERE service_id = ?");
     $stmt->bind_param("i", $service_id);
+
     if ($stmt->execute()) {
         echo "Service deleted successfully.";
     } else {
         echo "Failed to delete service.";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>

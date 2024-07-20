@@ -5,8 +5,6 @@ body {
     color: #4A403A; /* Dark Brown */
     margin: 0;
     padding: 0;
-
-    
 }
 
 /* Navbar */
@@ -18,13 +16,11 @@ body {
 }
 .nav-link:hover {
     color: #D4C19C; /* Slightly darker khaki */
-
 }
 .nav-link {
     /* Text in Bold */
     font-weight: bold;
 }
-
 
 /* Center navbar items */
 .navbar .navbar-nav {
@@ -38,12 +34,92 @@ body {
 }
 .jumbotron img {
     max-width: 100%;
+    height: 100%; /* Ensure the image takes up the full height */
+    object-fit: cover; /* Ensures the image covers the container */
     border-radius: 10px;
     transition: transform 0.3s;
 }
 .jumbotron img:hover {
     transform: scale(1.05);
 }
+
+.jumbotron img {
+    width: 100%;
+    height: 100%; /* Prend toute la hauteur du conteneur */
+    object-fit: cover; /* Couvre le conteneur */
+    border-radius: 10px;
+    transition: transform 0.3s;
+
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Jumbotron */
+.jumbotron {
+    background-color: #B8860B; /* Dark goldenrod */
+    color: #804000; /* Marron */
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Image Ratio Container */
+.ratio-16x9 {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.ratio-16x9 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.ratio-16x9 img:hover {
+    transform: scale(1.05);
+}
+
+/* Lead Paragraph */
+.lead {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    color: #4A403A;
+}
+
+/* Additional Classes */
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-ocre {
+    background-color: #B8860B;
+}
+
+.text-dark {
+    color: #4A403A;
+}
+
+
+
 
 /* Buttons */
 .btn-terracotta {
@@ -231,4 +307,33 @@ input.form-control, textarea.form-control {
 }
 .card:hover .card-title {
     color: #D4C19C; /* Slightly darker khaki */
+}
+
+/* styles.css */
+
+/* Styles pour le fond de la modale */
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Styles pour l'image dans la modale */
+#modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Bouton Fermer */
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+}
+
+/* Couleur de fond spécifique pour la modale */
+.modal-header, .modal-footer {
+    border: none;
 }

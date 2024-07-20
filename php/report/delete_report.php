@@ -1,15 +1,26 @@
 <?php
 include '../db.php';
+include '../session.php';
+requireLogin();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $report_id = $_POST['report_id'];
+    $rapport_id = $_POST['rapport_id'];
 
-    $stmt = $conn->prepare("DELETE FROM rapport_veterinaire WHERE rapport_veterinaire_id = ?");
-    $stmt->bind_param("i", $report_id);
-    if ($stmt->execute()) {
-        echo "Report deleted successfully.";
-    } else {
-        echo "Failed to delete report.";
+    // Validation de l'entrée
+    if (empty($rapport_id)) {
+        echo "ID du rapport requis.";
+        exit;
     }
+
+    $stmt = $conn->prepare("DELETE FROM rapport_veterinaire WHERE rapport_id = ?");
+    $stmt->bind_param("i", $rapport_id);
+
+    if ($stmt->execute()) {
+        echo "Rapport supprimé avec succès.";
+    } else {
+        echo "Échec de la suppression du rapport.";
+    }
+
+    $stmt->close();
 }
 ?>

@@ -83,5 +83,65 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function loadServices() {
+                $.ajax({
+                    url: '../php/get_services.php',
+                    method: 'GET',
+                    success: function(data) {
+                        let services = JSON.parse(data);
+                        let servicesList = $('#services-list');
+                        servicesList.empty();
+                        services.forEach(function(service) {
+                            servicesList.append(`
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${service.nom}</h5>
+                                        <p class="card-text">${service.description}</p>
+                                        <button class="btn btn-warning btn-update" data-id="${service.service_id}">Update</button>
+                                        <button class="btn btn-danger btn-delete" data-id="${service.service_id}">Delete</button>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    }
+                });
+            }
+
+            loadServices();
+
+            $('#create-service-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '../php/add_service.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert(response);
+                        loadServices();
+                        $('#create-service-form')[0].reset();
+                    }
+                });
+            });
+
+            $(document).on('click', '.btn-delete', function() {
+                if (confirm('Are you sure you want to delete this service?')) {
+                    let serviceId = $(this).data('id');
+                    $.ajax({
+                        url: '../php/delete_service.php',
+                        method: 'POST',
+                        data: { service_id: serviceId },
+                        success: function(response) {
+                            alert(response);
+                            loadServices();
+                        }
+                    });
+                }
+            });
+
+            // Handle update logic here
+        });
+    </script>
 </body>
 </html>
