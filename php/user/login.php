@@ -11,43 +11,55 @@ function console_log($message) {
     }
 }
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
+    console_log("Email: $email");
+    console_log("Password: $password");
+
     $stmt = $conn->prepare("SELECT utilisateur.password, role.label FROM utilisateur JOIN role ON utilisateur.role_id = role.role_id WHERE utilisateur.username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
+    if (!$stmt) {
+        console_log("Prepare failed: " . $conn->error);
+    }
+
+    $stmt->bind_param("s", $email);
+    if (!$stmt->execute()) {
+        console_log("Execute failed: " . $stmt->error);
+    }
+
     $stmt->store_result();
     $stmt->bind_result($hashed_password, $role);
 
-    
-
+    console_log("Number of rows: " . $stmt->num_rows);
 
     if ($stmt->num_rows > 0) {
-        $stmt->fetch(); 
-        console_log(password_hash($password, PASSWORD_DEFAULT));
-        console_log($hashed_password);
-        console_log(password_verify($password, $hashed_password));
+        $stmt->fetch();
+        console_log("Hashed password from DB: $hashed_password");
+        console_log("Password verify: " . password_verify($password, $hashed_password));
+
         if (password_verify($password, $hashed_password)) {
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $email;
             $_SESSION['role'] = $role;
+            console_log("Role: $role");
 
             if ($role == 'Vétérinaire') {
-                console_log($role);
                 header("Location: ../vet/vet_dashboard.html");
             } elseif ($role == 'Employé') {
-                console_log($role);
                 header("Location: ../employee/employee_dashboard.html");
-            } else {
-                header("Location: ../admin/admin_dashboard.html");
+            } elseif ($role == 'Admin') {
+                header("Location: ../../admin/admin_dashboard.html");
             }
             exit();
         } else {
-            echo "Invalid password.";
+            echo "Mot de passe incorrect.";
         }
     } else {
-        echo "No user found with that email address.";
+        echo "Utilisateur non trouvé.";
     }
 }
 ?>
